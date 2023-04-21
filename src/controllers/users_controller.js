@@ -6,11 +6,10 @@ class usersController {
   async create(req, res) {
     const { name, email, password } = req.body
 
-    const checkUserExists = await knex('users').where({email: email})
-    console.log(checkUserExists);
+    const checkUserExists = await knex('users').where({email})
 
-    if (checkUserExists != []) {
-      throw new AppError('Esse email já esta cadastrado.')
+    if (checkUserExists.length > 0) {
+      throw new AppError('Esse email já está cadastrado.')
     }
 
     const hashedPassword = await hash(password, 10)
