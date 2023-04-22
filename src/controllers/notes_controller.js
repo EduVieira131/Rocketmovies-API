@@ -1,6 +1,5 @@
 const AppError = require('../utils/app_error')
 const knex = require('../database/knex')
-const { response } = require('express')
 
 class notesController {
   async create(req, res) {
@@ -46,7 +45,6 @@ class notesController {
         .whereIn('name', filterTags)
         .innerJoin('notes', 'notes.id', 'tags.note_id')
         .orderBy('notes.title')
-      console.log(notes)
     } else {
       notes = await knex('notes')
         .where({ user_id })
