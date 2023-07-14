@@ -4,7 +4,7 @@ const knex = require('../database/knex')
 class notesController {
   async create(req, res) {
     const { title, description, rating, tags } = req.body
-    const { user_id } = req.params
+    const user_id = req.user.id
 
     if (rating > 5 || rating < 0) {
       throw new AppError('Rating deve estar entre 0 e 5')
