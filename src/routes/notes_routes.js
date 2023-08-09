@@ -6,6 +6,8 @@ const notesRoutes = Router()
 const NotesController = require('../controllers/notes_controller')
 const notesController = new NotesController()
 
+notesRoutes.use(ensureAuthenticated)
+
 notesRoutes.get('/', notesController.index)
 notesRoutes.post('/',ensureAuthenticated, notesController.create)
 notesRoutes.get('/:id', notesController.show)

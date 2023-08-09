@@ -31,7 +31,9 @@ class notesController {
   }
 
   async index(req, res) {
-    const { user_id, title, tags } = req.query
+    const { title, tags } = req.query
+
+    const user_id = req.user.id
 
     let notes
 

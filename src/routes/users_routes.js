@@ -13,7 +13,7 @@ const userAvatarController = new UserAvatarController()
 const upload = multer(uploadConfig.MULTER)
 
 usersRouter.post('/', usersController.create)
-usersRouter.put('/',ensureAuthenticated ,usersController.update)
+usersRouter.put('/', ensureAuthenticated , usersController.update)
 usersRouter.patch("/avatar", ensureAuthenticated, upload.single("avatar"),userAvatarController.update)
 
 module.exports = usersRouter

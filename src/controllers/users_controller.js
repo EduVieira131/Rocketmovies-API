@@ -54,7 +54,6 @@ class usersController {
       user.password = await hash(password, 10)
     }
 
-    // Need to include update date
     await knex('users').where({ id }).update(user)
 
     res.status(200).json(user)
